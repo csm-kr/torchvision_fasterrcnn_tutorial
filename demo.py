@@ -56,7 +56,7 @@ def visualize_detection_result(img_pil, boxes, labels, scores):
                     color=(0, 0, 0))
 
     # cv2.imshow(...)[0, 1] 범위의 float 값
-    cv2.imshow('i', im_show)
+    cv2.imshow('result', im_show)
     cv2.waitKey(0)
 
     # cv2.imwrite(...)[0, 255] 범위의 int 값
@@ -66,6 +66,12 @@ def visualize_detection_result(img_pil, boxes, labels, scores):
 
 
 def demo(img_path, threshold):
+    '''
+    demo faster rcnn
+    :param img_path: image path (default - soccer.png)
+    :param threshold: the threshold of object detection score (default - 0.9)
+    :return: None
+    '''
 
     # 1. load image
     img_pil = Image.open(img_path).convert('RGB')
