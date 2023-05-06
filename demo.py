@@ -6,12 +6,12 @@ import torchvision.transforms as T
 
 
 def visualize_detection_result(img_pil, boxes, labels, scores):
-    '''
+    """
     img_pil : pil image range - [0 255], uint8
     boxes : torch.Tensor, [num_obj, 4], torch.float32
     labels : torch.Tensor, [num_obj] torch.int64
     scores : torch.Tensor, [num_obj] torch.float32
-    '''
+    """
 
     # 1. uint8 -> float32
     image_np = np.array(img_pil).astype(np.float32) / 255.
@@ -55,23 +55,23 @@ def visualize_detection_result(img_pil, boxes, labels, scores):
                     fontScale=0.4,
                     color=(0, 0, 0))
 
-    # cv2.imshow(...)[0, 1] 범위의 float 값
+    # cv2.imshow(...) : float values in the range [0, 1]
     cv2.imshow('result', im_show)
     cv2.waitKey(0)
 
-    # cv2.imwrite(...)[0, 255] 범위의 int 값
+    # cv2.imwrite(...) : int values in the range [0, 255]
     # im_show = im_show * 255
     # cv2.imwrite("result.png", im_show)
     return 0
 
 
 def demo(img_path, threshold):
-    '''
+    """
     demo faster rcnn
     :param img_path: image path (default - soccer.png)
     :param threshold: the threshold of object detection score (default - 0.9)
     :return: None
-    '''
+    """
 
     # 1. load image
     img_pil = Image.open(img_path).convert('RGB')
