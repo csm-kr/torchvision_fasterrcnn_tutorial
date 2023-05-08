@@ -7,6 +7,7 @@ from torch.utils.data.distributed import DistributedSampler
 def build_dataloader(opts):
 
     transform_test = T.Compose([
+        T.Resize([800, 800]),
         T.ToTensor(),
     ])
 
